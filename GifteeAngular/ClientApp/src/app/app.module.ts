@@ -3,14 +3,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 
+// Angular modules components
 import { ToastyModule } from 'ng2-toasty';
+
+// Giftee components and services
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserListService } from './services/userList.service';
 
 @NgModule({
   declarations: [
@@ -18,22 +25,29 @@ import { ToastyModule } from 'ng2-toasty';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    HttpModule,
+    CommonModule,
     FormsModule,
     ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      // Giftee paths
+      { path: 'users/get', component: UserListComponent }
     ])
   ],
   exports: [
     ToastyModule],
-  providers: [],
+  providers: [
+    UserListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
