@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Resources\" />
-    <Folder Include="Core\Models\" />
     <Folder Include="Mapping\" />
     <Folder Include="Persistence\" />
   </ItemGroup>
