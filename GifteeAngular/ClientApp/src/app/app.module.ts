@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -16,8 +16,12 @@ import { FetchDataComponent } from './components/fetch-data/fetch-data.component
 import { ToastyModule } from 'ng2-toasty';
 
 // Giftee components and services
+// User
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserListService } from './services/userList.service';
+// Giftee
+import { GifteeFormComponent } from './components/giftee-form/giftee-form.component';
+import { GifteeFormService } from './services/giftee-form.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { UserListService } from './services/userList.service';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    UserListComponent
+    UserListComponent,
+    GifteeFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,19 +39,23 @@ import { UserListService } from './services/userList.service';
     HttpModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       // Giftee paths
-      { path: 'users/get', component: UserListComponent }
+      { path: 'users/get', component: UserListComponent },
+      { path: 'giftees/new', component: GifteeFormComponent },
+      { path: 'giftees/:id', component: GifteeFormComponent }
     ])
   ],
   exports: [
     ToastyModule],
   providers: [
-    UserListService
+    UserListService,
+    GifteeFormService
   ],
   bootstrap: [AppComponent]
 })

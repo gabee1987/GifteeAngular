@@ -30,10 +30,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\giftee.ts" />
+    <None Remove="ClientApp\src\app\services\giftee-form.service.ts" />
     <None Remove="ClientApp\src\app\services\userList.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\giftee.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\giftee-form.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\userList.service.ts" />
   </ItemGroup>
 

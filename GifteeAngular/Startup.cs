@@ -25,7 +25,7 @@ namespace GifteeAngular
         {
             // Add Scoped services (A single instance of repository for each request)
             services.AddScoped<IUserRepository, UserRepository>();
-            //services.AddScoped<IGifteeRepository, GifteeRepository>();
+            services.AddScoped<IGifteeRepository, GifteeRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
